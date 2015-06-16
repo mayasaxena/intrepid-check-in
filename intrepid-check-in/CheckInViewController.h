@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  CheckInViewController.h
 //  intrepid-check-in
 //
 //  Created by Maya Saxena on 6/16/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface CheckInViewController : UIViewController
 
 @end
-
