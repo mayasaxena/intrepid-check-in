@@ -11,4 +11,6 @@
 @interface CheckInViewController : UIViewController
 
 
+- (void) showAlert;
+
 @end
