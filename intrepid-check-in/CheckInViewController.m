@@ -6,8 +6,9 @@
 //  Copyright (c) 2015 Intrepid Pursuits. All rights reserved.
 //
 
-#import "CheckInViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "CheckInViewController.h"
+#import "CheckInRequestManager.h"
 
 @interface CheckInViewController () <CLLocationManagerDelegate>
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -56,6 +57,12 @@
 }
 
 
+- (IBAction)stopMonitoringPressed:(UIButton *)sender {
+    [self.locationManager stopMonitoringForRegion:self.intrepidRegion];
+
+}
+
+
 - (void) configureLocationManager {
     self.latitude = 42.367105;
     self.longitude = -71.080447;
@@ -83,16 +90,15 @@
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Check In" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action) {}];
+                                                          handler:^(UIAlertAction * action) {
+                                                              [[CheckInRequestManager sharedManager] postCheckInMessageToSlack];
+                                                          }];
     
     [alert addAction:defaultAction];
     [self presentViewController:alert animated:NO completion:nil];
     
 }
 
-- (void) checkInToSlack {
-    
-}
 
 
 @end

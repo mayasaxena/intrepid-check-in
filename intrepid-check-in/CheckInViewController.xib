@@ -29,14 +29,25 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ip-logo-letterhead.png" translatesAutoresizingMaskIntoConstraints="NO" id="oxJ-9h-VXa">
                     <rect key="frame" x="16" y="10" width="569" height="146"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkP-LR-gMs">
+                    <rect key="frame" x="245" y="363" width="111" height="30"/>
+                    <state key="normal" title="Stop Monitoring">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="stopMonitoringPressed:" destination="-1" eventType="touchUpInside" id="vr7-rc-UF2"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="oxJ-9h-VXa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="NPK-wd-Zhq"/>
+                <constraint firstItem="xkP-LR-gMs" firstAttribute="top" secondItem="PxF-lM-9K5" secondAttribute="bottom" constant="48" id="UfD-KD-UXh"/>
                 <constraint firstAttribute="centerX" secondItem="PxF-lM-9K5" secondAttribute="centerX" id="Uwg-CK-qJG"/>
                 <constraint firstAttribute="centerY" secondItem="PxF-lM-9K5" secondAttribute="centerY" id="d90-4J-po2"/>
                 <constraint firstAttribute="trailing" secondItem="oxJ-9h-VXa" secondAttribute="trailing" constant="15" id="hML-99-Feh"/>
                 <constraint firstItem="oxJ-9h-VXa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="ked-Iy-01V"/>
+                <constraint firstAttribute="centerX" secondItem="xkP-LR-gMs" secondAttribute="centerX" id="ylX-7w-MqD"/>
             </constraints>
         </view>
     </objects>
