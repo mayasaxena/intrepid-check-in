@@ -1,19 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D2134" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckInViewController">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="MfQ-aI-q6d"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PxF-lM-9K5">
+                    <rect key="frame" x="230" y="285" width="140" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="140" id="yI1-eN-CtC"/>
+                    </constraints>
+                    <state key="normal" title="Start Monitoring">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="startMonitoringPressed:" destination="-1" eventType="touchUpInside" id="aML-2d-ZLD"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ip-logo-letterhead.png" translatesAutoresizingMaskIntoConstraints="NO" id="oxJ-9h-VXa">
+                    <rect key="frame" x="16" y="10" width="569" height="146"/>
+                </imageView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="oxJ-9h-VXa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="NPK-wd-Zhq"/>
+                <constraint firstAttribute="centerX" secondItem="PxF-lM-9K5" secondAttribute="centerX" id="Uwg-CK-qJG"/>
+                <constraint firstAttribute="centerY" secondItem="PxF-lM-9K5" secondAttribute="centerY" id="d90-4J-po2"/>
+                <constraint firstAttribute="trailing" secondItem="oxJ-9h-VXa" secondAttribute="trailing" constant="15" id="hML-99-Feh"/>
+                <constraint firstItem="oxJ-9h-VXa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="ked-Iy-01V"/>
+            </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="ip-logo-letterhead.png" width="796" height="146"/>
+    </resources>
 </document>

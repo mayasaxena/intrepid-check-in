@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		A535685C1B304FE500F98DA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A535685B1B304FE500F98DA3 /* main.m */; };
 		A535685F1B304FE500F98DA3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A535685E1B304FE500F98DA3 /* AppDelegate.m */; };
-		A53568651B304FE500F98DA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A53568631B304FE500F98DA3 /* Main.storyboard */; };
 		A53568671B304FE500F98DA3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A53568661B304FE500F98DA3 /* Images.xcassets */; };
 		A535686A1B304FE500F98DA3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53568681B304FE500F98DA3 /* LaunchScreen.xib */; };
 		A53568761B304FE600F98DA3 /* intrepid_check_inTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A53568751B304FE600F98DA3 /* intrepid_check_inTests.m */; };
 		A53568871B30511D00F98DA3 /* CheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53568851B30511D00F98DA3 /* CheckInViewController.m */; };
 		A53568881B30511D00F98DA3 /* CheckInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53568861B30511D00F98DA3 /* CheckInViewController.xib */; };
+		A535688A1B30555E00F98DA3 /* ip-logo-letterhead.png in Resources */ = {isa = PBXBuildFile; fileRef = A53568891B30555E00F98DA3 /* ip-logo-letterhead.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +33,6 @@
 		A535685B1B304FE500F98DA3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A535685D1B304FE500F98DA3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A535685E1B304FE500F98DA3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A53568641B304FE500F98DA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A53568661B304FE500F98DA3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A53568691B304FE500F98DA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A535686F1B304FE600F98DA3 /* intrepid-check-inTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "intrepid-check-inTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +41,7 @@
 		A53568841B30511D00F98DA3 /* CheckInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInViewController.h; sourceTree = "<group>"; };
 		A53568851B30511D00F98DA3 /* CheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInViewController.m; sourceTree = "<group>"; };
 		A53568861B30511D00F98DA3 /* CheckInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInViewController.xib; sourceTree = "<group>"; };
+		A53568891B30555E00F98DA3 /* ip-logo-letterhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ip-logo-letterhead.png"; path = "../../../Downloads/ip-logo-letterhead.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +83,9 @@
 		A53568581B304FE500F98DA3 /* intrepid-check-in */ = {
 			isa = PBXGroup;
 			children = (
+				A53568891B30555E00F98DA3 /* ip-logo-letterhead.png */,
 				A535685D1B304FE500F98DA3 /* AppDelegate.h */,
 				A535685E1B304FE500F98DA3 /* AppDelegate.m */,
-				A53568631B304FE500F98DA3 /* Main.storyboard */,
 				A53568661B304FE500F98DA3 /* Images.xcassets */,
 				A53568681B304FE500F98DA3 /* LaunchScreen.xib */,
 				A53568591B304FE500F98DA3 /* Supporting Files */,
@@ -202,10 +202,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A53568651B304FE500F98DA3 /* Main.storyboard in Resources */,
 				A535686A1B304FE500F98DA3 /* LaunchScreen.xib in Resources */,
 				A53568881B30511D00F98DA3 /* CheckInViewController.xib in Resources */,
 				A53568671B304FE500F98DA3 /* Images.xcassets in Resources */,
+				A535688A1B30555E00F98DA3 /* ip-logo-letterhead.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,14 +248,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A53568631B304FE500F98DA3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A53568641B304FE500F98DA3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A53568681B304FE500F98DA3 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
