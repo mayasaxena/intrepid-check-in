@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>504452D1-3DF2-49D4-8BC7-3A3B0F1F7D9D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>intrepid-check-in</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EC4514EBC686A7D58BF5C8A50005DECBFD36E317</key>
+		<string>https://github.com/mayasaxena/intrepid-check-in.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>intrepid-check-in.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EC4514EBC686A7D58BF5C8A50005DECBFD36E317</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mayasaxena/intrepid-check-in.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EC4514EBC686A7D58BF5C8A50005DECBFD36E317</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EC4514EBC686A7D58BF5C8A50005DECBFD36E317</string>
+			<key>IDESourceControlWCCName</key>
+			<string>intrepid-check-in</string>
+		</dict>
+	</array>
+</dict>
+</plist>
