@@ -12,6 +12,6 @@
 
 + (instancetype) sharedManager;
 
-- (void) postCheckInMessageToSlack;
+- (void) postMessageToSlack:(NSString *)message withUsername:(NSString *) username;
 
 @end

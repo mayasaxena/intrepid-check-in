@@ -53,7 +53,12 @@
 
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    [(CheckInViewController *)self.window.rootViewController showAlert];
-    
+    if ([notification.alertTitle containsString:@"reached"]) {
+        [(CheckInViewController *)self.window.rootViewController showAlertWithTitle:notification.alertTitle andMessage:notification.alertBody andActionTitle:notification.alertAction andSlackMessage:@"I'm here!"];
+    } else if ([notification.alertTitle containsString:@"leaving"]) {
+        [(CheckInViewController *)self.window.rootViewController showAlertWithTitle:notification.alertTitle andMessage:notification.alertBody andActionTitle:notification.alertAction andSlackMessage:@"I'm leaving!"];
+    } else if ([notification.alertTitle isEqualToString:@""]) {
+        [(CheckInViewController *)self.window.rootViewController resetMonitoring];
+    }
 }
 @end

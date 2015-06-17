@@ -17,7 +17,9 @@
 @property (nonatomic, readwrite) CLLocationDegrees latitude;
 @property (nonatomic, readwrite) CLLocationDegrees longitude;
 @property BOOL hasAlreadyCheckedIn;
-@property (strong) UILocalNotification *checkIn;
+@property (strong) UILocalNotification *checkInNotification;
+@property (strong) UILocalNotification *checkOutNotification;
+@property (strong) UILocalNotification *resetNotification;
 
 @end
 
@@ -29,6 +31,8 @@
     
     [self configureLocationManager];
     [self configureCheckInNotification];
+    [self configureCheckOutNotification];
+    [self configureResetNotification];
     
     
 }
@@ -38,7 +42,7 @@
         if (!self.hasAlreadyCheckedIn) {
             NSLog(@"I'm here!");
             self.hasAlreadyCheckedIn = YES;
-            [[UIApplication sharedApplication] presentLocalNotificationNow:self.checkIn];
+            [[UIApplication sharedApplication] presentLocalNotificationNow:self.checkInNotification];
         }
     }
 }
@@ -48,6 +52,8 @@
     if ([region isEqual:self.intrepidRegion]) {
         if (self.hasAlreadyCheckedIn) {
             NSLog(@"I'm leaving!");
+            [[UIApplication sharedApplication] presentLocalNotificationNow:self.checkOutNotification];
+            [self.locationManager stopMonitoringForRegion:self.intrepidRegion];
         }
     }
 }
@@ -78,25 +84,69 @@
 }
 
 - (void) configureCheckInNotification {
-    self.checkIn = [[UILocalNotification alloc] init];
-    self.checkIn.alertBody = @"You've reached Intrepid Pursuits!";
-    self.checkIn.alertAction = @"Check In";
-    self.checkIn.hasAction = YES;
+    self.checkInNotification = [[UILocalNotification alloc] init];
+    self.checkInNotification.alertTitle = @"You've reached Intrepid Pursuits!";
+    self.checkInNotification.alertBody = @"Tell everybody you're here";
+    self.checkInNotification.alertAction = @"Check In";
+    
+    self.checkInNotification.hasAction = YES;
 }
 
-- (void) showAlert {
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"You've reached Intrepid Pursuits!"
-                                                                   message:@"Tell people you're here."
+- (void) configureCheckOutNotification {
+    self.checkOutNotification = [[UILocalNotification alloc] init];
+    self.checkOutNotification.alertTitle = @"You're leaving Intrepid Pursuits!";
+    self.checkOutNotification.alertBody = @"Tell everybody you're leaving";
+    self.checkOutNotification.alertAction = @"Check Out";
+    self.checkOutNotification.hasAction = YES;
+}
+
+- (void) configureResetNotification {
+    self.resetNotification = [[UILocalNotification alloc] init];
+    self.resetNotification.alertTitle = @"";
+    self.resetNotification.repeatInterval = NSCalendarUnitDay;
+    
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    
+    NSDateComponents *comps = [cal components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:[NSDate date]];
+    [comps setHour:0];
+    [comps setMinute:0];
+    [comps setSecond:0];
+    
+    NSDate *midnightOfToday = [cal dateFromComponents:comps];
+    
+    self.resetNotification.fireDate = midnightOfToday;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:self.resetNotification];
+    
+    
+}
+
+
+- (void) showAlertWithTitle:(NSString *)title
+                 andMessage:(NSString *)message
+             andActionTitle:(NSString *)actionTitle
+            andSlackMessage:(NSString *)slackMessage {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:title
+                                                                   message:message
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Check In" style:UIAlertActionStyleDefault
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:actionTitle
+                                                            style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
-                                                              [[CheckInRequestManager sharedManager] postCheckInMessageToSlack];
+                                                              [[CheckInRequestManager sharedManager]
+                                                               postMessageToSlack:slackMessage withUsername:((UITextField *)alert.textFields[0]).text];
                                                           }];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Enter your name";
+    }];
     
     [alert addAction:defaultAction];
     [self presentViewController:alert animated:NO completion:nil];
-    
+}
+
+- (void) resetMonitoring {
+    self.hasAlreadyCheckedIn = NO;
+    [self.locationManager startMonitoringForRegion:self.intrepidRegion];
 }
 
 

@@ -25,12 +25,12 @@
     return shared;
 }
 
-- (void) postCheckInMessageToSlack {
+- (void) postMessageToSlack:(NSString *)message withUsername:(NSString *)username {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    NSDictionary *parameters = @{@"text": @"I'm here!"};
+    NSDictionary *parameters = @{@"text": message, @"username" : username};
     
     [manager POST:@"https://hooks.slack.com/services/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" parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {

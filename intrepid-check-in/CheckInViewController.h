@@ -11,6 +11,11 @@
 @interface CheckInViewController : UIViewController
 
 
-- (void) showAlert;
+- (void) showAlertWithTitle:(NSString *)title
+                 andMessage:(NSString *)message
+             andActionTitle:(NSString *)actionTitle
+            andSlackMessage:(NSString *)slackMessage;
+
+- (void) resetMonitoring;
 
 @end
