@@ -16,10 +16,13 @@
 @property CLLocationCoordinate2D intrepidCoordinates;
 @property (nonatomic, readwrite) CLLocationDegrees latitude;
 @property (nonatomic, readwrite) CLLocationDegrees longitude;
+
 @property BOOL hasAlreadyCheckedIn;
+
 @property (strong) UILocalNotification *checkInNotification;
 @property (strong) UILocalNotification *checkOutNotification;
 @property (strong) UILocalNotification *resetNotification;
+
 @property (weak, nonatomic) IBOutlet UILabel *monitoringStatus;
 
 @end
