@@ -20,6 +20,7 @@
 @property (strong) UILocalNotification *checkInNotification;
 @property (strong) UILocalNotification *checkOutNotification;
 @property (strong) UILocalNotification *resetNotification;
+@property (weak, nonatomic) IBOutlet UILabel *monitoringStatus;
 
 @end
 
@@ -28,46 +29,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.hasAlreadyCheckedIn = NO;
-    
     [self configureLocationManager];
     [self configureCheckInNotification];
     [self configureCheckOutNotification];
     [self configureResetNotification];
+    [self updateMonitoringStatus];
     
-    
-}
-
-- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
-    if ([region isEqual:self.intrepidRegion]) {
-        if (!self.hasAlreadyCheckedIn) {
-            NSLog(@"I'm here!");
-            self.hasAlreadyCheckedIn = YES;
-            [[UIApplication sharedApplication] presentLocalNotificationNow:self.checkInNotification];
-        }
-    }
 }
 
 
-- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
-    if ([region isEqual:self.intrepidRegion]) {
-        if (self.hasAlreadyCheckedIn) {
-            NSLog(@"I'm leaving!");
-            [[UIApplication sharedApplication] presentLocalNotificationNow:self.checkOutNotification];
-            [self.locationManager stopMonitoringForRegion:self.intrepidRegion];
-        }
-    }
-}
-
-- (IBAction)startMonitoringPressed:(UIButton *)sender {
-    [self.locationManager startMonitoringForRegion:self.intrepidRegion];
-}
-
-
-- (IBAction)stopMonitoringPressed:(UIButton *)sender {
-    [self.locationManager stopMonitoringForRegion:self.intrepidRegion];
-
-}
-
+#pragma mark - Configuration functions
 
 - (void) configureLocationManager {
     self.latitude = 42.367105;
@@ -122,6 +93,87 @@
 }
 
 
+#pragma mark - Location Manager Functions
+
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
+    if ([region isEqual:self.intrepidRegion]) {
+        [self checkIn];
+    }
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
+    if ([region isEqual:self.intrepidRegion]) {
+        if (self.hasAlreadyCheckedIn) {
+            NSLog(@"I'm leaving!");
+            [[UIApplication sharedApplication] presentLocalNotificationNow:self.checkOutNotification];
+            [self.locationManager stopMonitoringForRegion:self.intrepidRegion];
+        }
+    }
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
+    if ([region isEqual:self.intrepidRegion]) {
+        NSLog(@"monitoring");
+
+        [self.locationManager requestStateForRegion:region];
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region {
+    if ([region isEqual:self.intrepidRegion] && state == CLRegionStateInside) {
+        NSLog(@"determined");
+        [self checkIn];
+    }
+}
+
+
+#pragma mark - UI Actions
+
+
+- (IBAction)startMonitoringPressed:(UIButton *)sender {
+    [self.locationManager startMonitoringForRegion:self.intrepidRegion];
+    [self updateMonitoringStatus];
+}
+
+
+- (IBAction)stopMonitoringPressed:(UIButton *)sender {
+    [self.locationManager stopMonitoringForRegion:self.intrepidRegion];
+    [self updateMonitoringStatus];
+
+}
+
+
+- (void) resetMonitoring {
+    self.hasAlreadyCheckedIn = NO;
+    [self.locationManager startMonitoringForRegion:self.intrepidRegion];
+}
+
+
+- (void) checkIn {
+    if (!self.hasAlreadyCheckedIn) {
+        NSLog(@"I'm here!");
+        self.hasAlreadyCheckedIn = YES;
+        [[UIApplication sharedApplication] presentLocalNotificationNow:self.checkInNotification];
+    }
+}
+
+- (void) updateMonitoringStatus {
+    if ([self.locationManager.monitoredRegions count] > 0) {
+        self.monitoringStatus.text = @"Yes";
+        self.monitoringStatus.textColor = [UIColor greenColor];
+    } else {
+        self.monitoringStatus.text = @"No";
+        self.monitoringStatus.textColor = [UIColor redColor];
+    }
+}
+
+
+
+#pragma mark - Alert Functions
+
+
 - (void) showAlertWithTitle:(NSString *)title
                  andMessage:(NSString *)message
              andActionTitle:(NSString *)actionTitle
@@ -144,10 +196,6 @@
     [self presentViewController:alert animated:NO completion:nil];
 }
 
-- (void) resetMonitoring {
-    self.hasAlreadyCheckedIn = NO;
-    [self.locationManager startMonitoringForRegion:self.intrepidRegion];
-}
 
 
 

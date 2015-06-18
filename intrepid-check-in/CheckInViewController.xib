@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckInViewController">
             <connections>
+                <outlet property="monitoringStatus" destination="TXN-BS-Pdu" id="JLX-cj-BCv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="MfQ-aI-q6d"/>
             </connections>
         </placeholder>
@@ -38,12 +39,29 @@
                         <action selector="stopMonitoringPressed:" destination="-1" eventType="touchUpInside" id="vr7-rc-UF2"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monitoring:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMq-Z8-Fe0">
+                    <rect key="frame" x="240" y="219" width="88" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="No" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXN-BS-Pdu">
+                    <rect key="frame" x="331" y="219" width="39" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="centerX" secondItem="lMq-Z8-Fe0" secondAttribute="centerX" constant="16" id="0o1-Ce-pJT"/>
+                <constraint firstItem="lMq-Z8-Fe0" firstAttribute="top" secondItem="TXN-BS-Pdu" secondAttribute="top" id="46e-ON-KBQ"/>
+                <constraint firstItem="lMq-Z8-Fe0" firstAttribute="top" secondItem="oxJ-9h-VXa" secondAttribute="bottom" constant="63" id="HkE-yL-TfA"/>
                 <constraint firstItem="oxJ-9h-VXa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="NPK-wd-Zhq"/>
                 <constraint firstItem="xkP-LR-gMs" firstAttribute="top" secondItem="PxF-lM-9K5" secondAttribute="bottom" constant="48" id="UfD-KD-UXh"/>
+                <constraint firstItem="TXN-BS-Pdu" firstAttribute="leading" secondItem="lMq-Z8-Fe0" secondAttribute="trailing" constant="3" id="Ug1-d0-g49"/>
                 <constraint firstAttribute="centerX" secondItem="PxF-lM-9K5" secondAttribute="centerX" id="Uwg-CK-qJG"/>
+                <constraint firstAttribute="centerX" secondItem="TXN-BS-Pdu" secondAttribute="centerX" constant="-50.5" id="a0F-nu-aRr"/>
                 <constraint firstAttribute="centerY" secondItem="PxF-lM-9K5" secondAttribute="centerY" id="d90-4J-po2"/>
                 <constraint firstAttribute="trailing" secondItem="oxJ-9h-VXa" secondAttribute="trailing" constant="15" id="hML-99-Feh"/>
                 <constraint firstItem="oxJ-9h-VXa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="ked-Iy-01V"/>

@@ -16,7 +16,6 @@
 		A53568871B30511D00F98DA3 /* CheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53568851B30511D00F98DA3 /* CheckInViewController.m */; };
 		A53568881B30511D00F98DA3 /* CheckInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53568861B30511D00F98DA3 /* CheckInViewController.xib */; };
 		A535688A1B30555E00F98DA3 /* ip-logo-letterhead.png in Resources */ = {isa = PBXBuildFile; fileRef = A53568891B30555E00F98DA3 /* ip-logo-letterhead.png */; };
-		A535688C1B3098AA00F98DA3 /* intrepid-office.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A535688B1B3098AA00F98DA3 /* intrepid-office.gpx */; };
 		A58661D51B30B1700017DDC9 /* CheckInRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A58661D41B30B1700017DDC9 /* CheckInRequestManager.m */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +47,6 @@
 		A53568851B30511D00F98DA3 /* CheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInViewController.m; sourceTree = "<group>"; };
 		A53568861B30511D00F98DA3 /* CheckInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInViewController.xib; sourceTree = "<group>"; };
 		A53568891B30555E00F98DA3 /* ip-logo-letterhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ip-logo-letterhead.png"; path = "../../../Downloads/ip-logo-letterhead.png"; sourceTree = "<group>"; };
-		A535688B1B3098AA00F98DA3 /* intrepid-office.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "intrepid-office.gpx"; path = "../../Downloads/intrepid-office.gpx"; sourceTree = "<group>"; };
 		A58661D31B30B1700017DDC9 /* CheckInRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInRequestManager.h; sourceTree = "<group>"; };
 		A58661D41B30B1700017DDC9 /* CheckInRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInRequestManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,7 +81,6 @@
 		A535684D1B304FE500F98DA3 = {
 			isa = PBXGroup;
 			children = (
-				A535688B1B3098AA00F98DA3 /* intrepid-office.gpx */,
 				A53568581B304FE500F98DA3 /* intrepid-check-in */,
 				A53568721B304FE600F98DA3 /* intrepid-check-inTests */,
 				A53568571B304FE500F98DA3 /* Products */,
@@ -236,7 +233,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A535688C1B3098AA00F98DA3 /* intrepid-office.gpx in Resources */,
 				A535686A1B304FE500F98DA3 /* LaunchScreen.xib in Resources */,
 				A53568881B30511D00F98DA3 /* CheckInViewController.xib in Resources */,
 				A53568671B304FE500F98DA3 /* Images.xcassets in Resources */,
