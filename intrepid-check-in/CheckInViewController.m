@@ -41,7 +41,7 @@
 }
 
 
-#pragma mark - Configuration functions
+#pragma mark - Configuration Methods
 
 - (void) configureLocationManager {
     self.latitude = 42.367105;
@@ -96,7 +96,7 @@
 }
 
 
-#pragma mark - Location Manager Functions
+#pragma mark - Location Manager Delegate Functions
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
     if ([region isEqual:self.intrepidRegion]) {
@@ -108,7 +108,6 @@
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
     if ([region isEqual:self.intrepidRegion]) {
         if (self.hasAlreadyCheckedIn) {
-            NSLog(@"I'm leaving!");
             [[UIApplication sharedApplication] presentLocalNotificationNow:self.checkOutNotification];
             [self.locationManager stopMonitoringForRegion:self.intrepidRegion];
         }
@@ -118,7 +117,6 @@
 
 - (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
     if ([region isEqual:self.intrepidRegion]) {
-        NSLog(@"monitoring");
 
         [self.locationManager requestStateForRegion:region];
     }
@@ -126,7 +124,6 @@
 
 - (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region {
     if ([region isEqual:self.intrepidRegion] && state == CLRegionStateInside) {
-        NSLog(@"determined");
         [self checkIn];
     }
 }
@@ -148,6 +145,8 @@
 }
 
 
+#pragma mark - Monitoring Helper Methods
+
 - (void) resetMonitoring {
     self.hasAlreadyCheckedIn = NO;
     [self.locationManager startMonitoringForRegion:self.intrepidRegion];
@@ -156,7 +155,6 @@
 
 - (void) checkIn {
     if (!self.hasAlreadyCheckedIn) {
-        NSLog(@"I'm here!");
         self.hasAlreadyCheckedIn = YES;
         [[UIApplication sharedApplication] presentLocalNotificationNow:self.checkInNotification];
     }
@@ -174,7 +172,7 @@
 
 
 
-#pragma mark - Alert Functions
+#pragma mark - Alert Methods
 
 
 - (void) showAlertWithTitle:(NSString *)title
@@ -189,8 +187,10 @@
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [[CheckInRequestManager sharedManager]
-                                                               postMessageToSlack:slackMessage withUsername:((UITextField *)alert.textFields[0]).text];
+                                                               postMessageToSlack:slackMessage
+                                                                     withUsername:((UITextField *)alert.textFields[0]).text];
                                                           }];
+    
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"Enter your name";
     }];
